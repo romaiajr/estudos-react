@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // Também podemos realizar desestruturação do JS nas props
 // ou simplesmente function Contador(props)
@@ -8,6 +8,13 @@ import React, { useState } from "react";
 function Contador({ text, children }) {
   // Declaração de states e variáveis
   let [contador, setContador] = useState(0);
+
+  // Declaração de Efeitos colaterais do componente
+  useEffect(() => {
+    // Atualiza o titulo do documento usando a API do browser
+    document.title = `Você clicou ${contador} vezes`;
+  }, [contador]);
+
   // Declaração de funções
   const handleClick = () => {
     setContador((contador += 1));
